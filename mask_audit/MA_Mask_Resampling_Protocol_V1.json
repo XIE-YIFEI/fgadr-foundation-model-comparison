@@ -1,0 +1,19 @@
+{
+  "experiment": "Experiment05_Step5.3C",
+  "cohort_sha256": "542c4f21780ba4060945e893a22c4e133b0f44a006fecb94ea5da4b76b93b286",
+  "image_count": 156,
+  "source_mask_threshold_rule": "pixel_value > reference_threshold",
+  "primary_resampling": "cv2.INTER_AREA",
+  "sensitivity_resampling": "cv2.INTER_NEAREST",
+  "target_resolution": [
+    224,
+    224
+  ],
+  "nearest_empty_count": 0,
+  "weighted_empty_count": 0,
+  "median_weighted_area_error": 3.368138867839543e-08,
+  "maximum_weighted_area_error": 1.22519550777058e-07,
+  "result_sha256": "1a508aa582e176ff95aff394b6f722a14425d2be93a21952f388f62e1e6ecd2f",
+  "clinical_lesion_validation": false,
+  "test_split_evaluated": false
+}

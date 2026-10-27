@@ -1,0 +1,9 @@
+{
+  "created_utc": "2026-10-27T03:45:52.267085+00:00",
+  "design": "Probes identical to Exp 15/15B/16B; fitted on train split; evaluated once on test split",
+  "part_A": "image-level multinomial logistic probe, blocks 6/12/18/24, C by grouped 4-fold CV on train; label efficiency 1-100% (block 24)",
+  "part_B": "MA patch probe at scales 224/448/896/1344; positive = any MA pixel & >=50% foreground; negatives no MA in 3x3, 10:1, min 20/image; L2 logistic, penalty on 20% held-out train groups",
+  "primary": "retinal minus generic AUROC at block 24, native scale (1344), per pair",
+  "secondary": "all scales and blocks 12/24; AUPRC; Part A metrics",
+  "statistics": "paired cluster bootstrap over test source-risk groups, 1000 resamples"
+}

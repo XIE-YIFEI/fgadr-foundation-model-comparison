@@ -1,0 +1,10 @@
+{
+  "scales": [
+    224,
+    448,
+    896,
+    1344
+  ],
+  "strict_images": 889,
+  "test_images_used": 0
+}

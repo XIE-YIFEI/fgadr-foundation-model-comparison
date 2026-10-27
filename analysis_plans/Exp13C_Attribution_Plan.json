@@ -1,0 +1,9 @@
+{
+  "created_utc": "2026-10-27T08:07:09.498827+00:00",
+  "cohort": "test images meeting the validation primary_ma_candidate rule (strict mask, non-empty, no quality flags)",
+  "cam": "Grad-CAM on final-block patch tokens, true-grade logit, ReLU, bilinear to 224, max-normalised (as Exp 05/07)",
+  "null": "all mask translations keeping >=95% weight in eroded retinal foreground; >=100 shifts; images failing excluded",
+  "primary": "seed-42 models: retinal minus generic null-adjusted enrichment, per pair",
+  "secondary": "seed-mean differences; raw enrichment; spatial percentile; per-model means; no-erosion sensitivity",
+  "statistics": "paired cluster bootstrap over test source-risk groups, 2000 resamples"
+}

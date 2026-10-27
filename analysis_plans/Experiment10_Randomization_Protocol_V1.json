@@ -1,0 +1,167 @@
+{
+  "experiment": "Experiment10_Attribution_Sanity_Checks",
+  "protocol_version": "V1",
+  "status": "frozen_before_randomization",
+  "created_utc": "2026-10-24T14:40:39.643588+00:00",
+  "models": {
+    "RETFound": {
+      "checkpoint": "experiment04_results/retfound_vit_large_v1/best_model.pt",
+      "checkpoint_sha256": "557902976006b63f3246f6bef594cf119165b105d79dbe1fd0d098b2f7318bf8"
+    },
+    "Meta_MAE": {
+      "checkpoint": "experiment07_results/meta_mae_vit_large_v1/best_model.pt",
+      "checkpoint_sha256": null
+    }
+  },
+  "architecture": "vit_large_patch16_224",
+  "num_classes": 5,
+  "global_pool": "avg",
+  "attribution": {
+    "method": "GradCAM",
+    "target_layer": "blocks.23",
+    "target_class": "ground_truth_grade",
+    "input_size": 224,
+    "precision": "bfloat16",
+    "cam_resolution": [
+      224,
+      224
+    ],
+    "original_cam_files": {
+      "RETFound": "experiment05_results/gradcam/RETFound_MA_CAM_Maps_V1.npz",
+      "Meta_MAE": "experiment07_results/gradcam/Meta_MAE_MA_CAM_Maps_V1.npz"
+    }
+  },
+  "randomization": {
+    "design": "cascading_parameter_randomization",
+    "stages": {
+      "R0": [],
+      "R1": [
+        "head"
+      ],
+      "R2": [
+        "head",
+        "fc_norm",
+        "blocks.23"
+      ],
+      "R3": [
+        "head",
+        "fc_norm",
+        "blocks.18",
+        "blocks.19",
+        "blocks.20",
+        "blocks.21",
+        "blocks.22",
+        "blocks.23"
+      ],
+      "R4": [
+        "head",
+        "fc_norm",
+        "blocks.12",
+        "blocks.13",
+        "blocks.14",
+        "blocks.15",
+        "blocks.16",
+        "blocks.17",
+        "blocks.18",
+        "blocks.19",
+        "blocks.20",
+        "blocks.21",
+        "blocks.22",
+        "blocks.23"
+      ],
+      "R5": [
+        "head",
+        "fc_norm",
+        "blocks.0",
+        "blocks.1",
+        "blocks.2",
+        "blocks.3",
+        "blocks.4",
+        "blocks.5",
+        "blocks.6",
+        "blocks.7",
+        "blocks.8",
+        "blocks.9",
+        "blocks.10",
+        "blocks.11",
+        "blocks.12",
+        "blocks.13",
+        "blocks.14",
+        "blocks.15",
+        "blocks.16",
+        "blocks.17",
+        "blocks.18",
+        "blocks.19",
+        "blocks.20",
+        "blocks.21",
+        "blocks.22",
+        "blocks.23"
+      ],
+      "R6": [
+        "head",
+        "fc_norm",
+        "blocks.0",
+        "blocks.1",
+        "blocks.2",
+        "blocks.3",
+        "blocks.4",
+        "blocks.5",
+        "blocks.6",
+        "blocks.7",
+        "blocks.8",
+        "blocks.9",
+        "blocks.10",
+        "blocks.11",
+        "blocks.12",
+        "blocks.13",
+        "blocks.14",
+        "blocks.15",
+        "blocks.16",
+        "blocks.17",
+        "blocks.18",
+        "blocks.19",
+        "blocks.20",
+        "blocks.21",
+        "blocks.22",
+        "blocks.23",
+        "patch_embed",
+        "cls_token",
+        "pos_embed"
+      ]
+    },
+    "randomization_seeds": [
+      1042,
+      2042,
+      3042
+    ],
+    "repetitions_per_stage": 3,
+    "independent_repetitions": true,
+    "cumulative_modules_within_each_repetition": true,
+    "initialization": "Reinitialize selected model components using their native PyTorch/timm initialization methods; verify implementation before pilot."
+  },
+  "evaluation": {
+    "pilot_before_full_run": true,
+    "cohort": "frozen_validation_ma_candidates",
+    "validation_image_count": 156,
+    "primary_similarity_metrics": [
+      "spearman_correlation",
+      "ssim"
+    ],
+    "diagnostics": [
+      "degenerate_cam_rate",
+      "near_constant_cam_rate",
+      "logit_change",
+      "probability_change"
+    ],
+    "cluster_unit": "source_risk_group",
+    "test_set_access": false
+  },
+  "limitations": [
+    "Sanity checks measure parameter sensitivity, not clinical accuracy",
+    "Image-level pixels are not independent observations",
+    "Source-risk groups are not verified patient identities",
+    "Randomized-model degenerate CAMs require explicit reporting",
+    "R6 includes token and positional parameters that require special initialization handling",
+    "Randomized-model outputs do not define new pretrained baselines"
+  ]
+}

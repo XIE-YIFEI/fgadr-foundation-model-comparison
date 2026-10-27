@@ -1,0 +1,6 @@
+{
+  "created_utc": "2026-10-27T15:28:34.735022+00:00",
+  "purpose": "post-hoc sensitivity analysis, added after Exp14 showed grade over-calling on IDRiD",
+  "transform": "Reinhard LAB colour transfer inside fundus mask to mean FGADR-train statistics; no IDRiD labels used",
+  "reported": "same metrics as Exp14 Part 1 + predicted-grade share + mean one-vs-rest AUC"
+}

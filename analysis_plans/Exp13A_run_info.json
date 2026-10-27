@@ -1,0 +1,7 @@
+{
+  "analysis_plan_sha256": "834b8d7c19a076170283157c149a9362bd7d6baeebfca7e5440f953049e775a5",
+  "test_images": 276,
+  "test_risk_groups": 236,
+  "models": 15,
+  "finished_utc": "2026-10-27T03:31:16.015372+00:00"
+}

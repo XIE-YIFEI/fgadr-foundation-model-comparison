@@ -1,0 +1,7 @@
+{
+  "images_train": 1290,
+  "images_val": 276,
+  "strict_mask_images": 889,
+  "patches": 270085,
+  "test_images_used": 0
+}

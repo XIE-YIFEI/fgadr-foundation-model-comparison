@@ -1,0 +1,74 @@
+{
+  "experiment": "Experiment08_Regularization_Ablation_V1",
+  "created_utc": "2026-10-21T15:20:35.694917+00:00",
+  "status": "PROTOCOL_LOCKED_NOT_TRAINED",
+  "research_question": "Does matched Drop Path regularization improve validation generalization and alter the relative performance of retinal versus general MAE pretraining?",
+  "architecture": "vit_large_patch16_224",
+  "num_classes": 5,
+  "global_pool": "avg",
+  "drop_path_rate": 0.1,
+  "baseline_drop_path_rate": 0.0,
+  "training_seed": 42,
+  "training_index_sha256": "9352577b7ed8279912392d9349a4bcd67f98ba8a67356e8d6fada0839e2082d3",
+  "split_sha256": "a3d83242847834ef38c6d1de8c9566556f33792041370807c709a5af4370d49f",
+  "train_images": 1290,
+  "validation_images": 276,
+  "test_images_evaluated": 0,
+  "training": {
+    "micro_batch_size": 4,
+    "gradient_accumulation_steps": 4,
+    "effective_batch_size": 16,
+    "optimizer": "AdamW",
+    "optimizer_foreach": false,
+    "learning_rate": 1e-05,
+    "weight_decay": 0.05,
+    "weighted_ce_reduction": "none",
+    "accumulation_normalization": "sum_of_class_weights_per_accumulation_group",
+    "gradient_clip_norm": 1.0,
+    "scheduler": "CosineAnnealingLR",
+    "scheduler_t_max": 25,
+    "scheduler_eta_min": 1e-07,
+    "maximum_epochs": 25,
+    "minimum_epochs": 8,
+    "patience": 6,
+    "model_selection_metric": "val_macro_f1",
+    "class_weights": [
+      1.6152555557576007,
+      1.1187667747158858,
+      0.6665034324838375,
+      0.6394716814936021,
+      0.9600025555490744
+    ],
+    "precision": "bfloat16",
+    "gradient_checkpointing": true,
+    "train_transform": [
+      "Resize(224,224,BICUBIC)",
+      "RandomHorizontalFlip(p=0.5)",
+      "RandomRotation(degrees=10,BILINEAR,fill=0)",
+      "ToTensor",
+      "Normalize(ImageNet)"
+    ],
+    "val_transform": [
+      "Resize(224,224,BICUBIC)",
+      "ToTensor",
+      "Normalize(ImageNet)"
+    ]
+  },
+  "models": {
+    "RETFound": {
+      "pretraining": "RETFound_mae_natureCFP",
+      "pretrained_checkpoint": "model_checkpoints/RETFound_pretrained/RETFound_mae_natureCFP.pth",
+      "pretrained_sha256": "e1e4f66a1b792eeb6e2efaf158f33be35c8255f36b3d17ed67cd5129da246485",
+      "output_subdirectory": "retfound_drop_path_01_v1"
+    },
+    "Meta_MAE": {
+      "pretraining": "Meta_MAE_ImageNet1K",
+      "pretrained_checkpoint": "model_checkpoints/Meta_MAE_pretrained/mae_pretrain_vit_large.pth",
+      "pretrained_sha256": "d2ceff4892889d0c0f5418fa8bcb02e6a25a37fc3bdc0619c3cacd7d3d05c39f",
+      "output_subdirectory": "meta_mae_drop_path_01_v1"
+    }
+  },
+  "analysis_role": "validation_regularization_robustness",
+  "baseline_checkpoints_preserved": true,
+  "test_split_locked": true
+}

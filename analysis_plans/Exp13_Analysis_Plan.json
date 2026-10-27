@@ -1,0 +1,133 @@
+{
+  "created_utc": "2026-10-27T03:22:38.874545+00:00",
+  "test_split": "FGADR frozen test split (276 images), first use for classification",
+  "models": {
+    "mae_retfound_s42": {
+      "family": "mae_matched",
+      "encoder": "retfound",
+      "seed": 42,
+      "arch": "vit_large_patch16_224",
+      "checkpoint": "/content/drive/MyDrive/DR_Research/experiment04_results/retfound_vit_large_v1/best_model.pt"
+    },
+    "mae_meta_s42": {
+      "family": "mae_matched",
+      "encoder": "generic",
+      "seed": 42,
+      "arch": "vit_large_patch16_224",
+      "checkpoint": "/content/drive/MyDrive/DR_Research/experiment07_results/meta_mae_vit_large_v1/best_model.pt"
+    },
+    "mae_retfound_s1042": {
+      "family": "mae_matched",
+      "encoder": "retfound",
+      "seed": 1042,
+      "arch": "vit_large_patch16_224",
+      "checkpoint": "/content/drive/MyDrive/DR_Research/experiment11_multiseed/retfound_seed1042/best_model.pt"
+    },
+    "mae_meta_s1042": {
+      "family": "mae_matched",
+      "encoder": "generic",
+      "seed": 1042,
+      "arch": "vit_large_patch16_224",
+      "checkpoint": "/content/drive/MyDrive/DR_Research/experiment11_multiseed/meta_mae_seed1042/best_model.pt"
+    },
+    "mae_retfound_s2042": {
+      "family": "mae_matched",
+      "encoder": "retfound",
+      "seed": 2042,
+      "arch": "vit_large_patch16_224",
+      "checkpoint": "/content/drive/MyDrive/DR_Research/experiment11_multiseed/retfound_seed2042/best_model.pt"
+    },
+    "mae_meta_s2042": {
+      "family": "mae_matched",
+      "encoder": "generic",
+      "seed": 2042,
+      "arch": "vit_large_patch16_224",
+      "checkpoint": "/content/drive/MyDrive/DR_Research/experiment11_multiseed/meta_mae_seed2042/best_model.pt"
+    },
+    "dino_retfound_s42": {
+      "family": "dinov2_matched",
+      "encoder": "retfound",
+      "seed": 42,
+      "arch": "vit_large_patch14_dinov2",
+      "checkpoint": "/content/drive/MyDrive/DR_Research/experiment16_dinov2_pair/retfound_dinov2_seed42/best_model.pt"
+    },
+    "dino_generic_s42": {
+      "family": "dinov2_matched",
+      "encoder": "generic",
+      "seed": 42,
+      "arch": "vit_large_patch14_dinov2",
+      "checkpoint": "/content/drive/MyDrive/DR_Research/experiment16_dinov2_pair/dinov2_generic_seed42/best_model.pt"
+    },
+    "dino_retfound_s1042": {
+      "family": "dinov2_matched",
+      "encoder": "retfound",
+      "seed": 1042,
+      "arch": "vit_large_patch14_dinov2",
+      "checkpoint": "/content/drive/MyDrive/DR_Research/experiment16_dinov2_pair/retfound_dinov2_seed1042/best_model.pt"
+    },
+    "dino_generic_s1042": {
+      "family": "dinov2_matched",
+      "encoder": "generic",
+      "seed": 1042,
+      "arch": "vit_large_patch14_dinov2",
+      "checkpoint": "/content/drive/MyDrive/DR_Research/experiment16_dinov2_pair/dinov2_generic_seed1042/best_model.pt"
+    },
+    "dino_retfound_s2042": {
+      "family": "dinov2_matched",
+      "encoder": "retfound",
+      "seed": 2042,
+      "arch": "vit_large_patch14_dinov2",
+      "checkpoint": "/content/drive/MyDrive/DR_Research/experiment16_dinov2_pair/retfound_dinov2_seed2042/best_model.pt"
+    },
+    "dino_generic_s2042": {
+      "family": "dinov2_matched",
+      "encoder": "generic",
+      "seed": 2042,
+      "arch": "vit_large_patch14_dinov2",
+      "checkpoint": "/content/drive/MyDrive/DR_Research/experiment16_dinov2_pair/dinov2_generic_seed2042/best_model.pt"
+    },
+    "official_retfound_s42": {
+      "family": "mae_official",
+      "encoder": "retfound",
+      "seed": 42,
+      "arch": "vit_large_patch16_224",
+      "checkpoint": "/content/drive/MyDrive/DR_Research/experiment12_official_recipe/retfound_seed42/best_model.pt"
+    },
+    "official_meta_s42": {
+      "family": "mae_official",
+      "encoder": "generic",
+      "seed": 42,
+      "arch": "vit_large_patch16_224",
+      "checkpoint": "/content/drive/MyDrive/DR_Research/experiment12_official_recipe/meta_mae_seed42/best_model.pt"
+    },
+    "efficientnet_b0_s42": {
+      "family": "baseline",
+      "encoder": "efficientnet",
+      "seed": 42,
+      "arch": "efficientnet_b0",
+      "checkpoint": "/content/drive/MyDrive/DR_Research/experiment03_results/efficientnet_b0_baseline_v1/best_model.pt"
+    }
+  },
+  "checkpoint_rule": "best validation macro-F1 epoch (fixed before test access)",
+  "preprocessing": "Resize 224x224 bicubic, ImageNet normalisation, no TTA",
+  "primary_metric": "macro-F1 (5-class)",
+  "secondary_metrics": [
+    "QWK",
+    "accuracy",
+    "referable-DR AUC (P(grade>=2))",
+    "DR1 recall",
+    "per-grade recall",
+    "Brier score",
+    "ECE (15 bins)",
+    "NLL"
+  ],
+  "primary_comparisons": [
+    "mae_matched: retfound - generic, mean over seeds 42/1042/2042",
+    "dinov2_matched: retfound - generic, mean over seeds 42/1042/2042"
+  ],
+  "secondary_comparisons": [
+    "mae_official: retfound - generic (seed 42)",
+    "seed-ensemble (mean probabilities) within each matched family"
+  ],
+  "statistics": "paired cluster bootstrap over source-risk groups, 2000 resamples, percentile 95% CI; no multiplicity correction (2 primary comparisons reported with CIs)"
+}

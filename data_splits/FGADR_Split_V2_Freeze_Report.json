@@ -1,0 +1,20 @@
+{
+  "version": "FGADR_Split_V2_Frozen",
+  "frozen_utc": "2026-10-19T14:56:20.636962+00:00",
+  "images": 1842,
+  "risk_groups": 1453,
+  "conflicting_risk_groups": 90,
+  "images_in_conflicting_risk_groups": 292,
+  "exact_duplicate_pairs": 14,
+  "exact_duplicate_label_conflict_images": 4,
+  "old_edge_crossings": 0,
+  "new_edge_crossings": 0,
+  "exact_duplicate_crossings": 0,
+  "candidate_sha256": "8abaa9ef321be83fbdc8a72fd9f2d9a727e824be16fe9ff87f9ee4c5e45661bc",
+  "manifest_sha256": "3a027fc8be75b11fa62c08c6f3a6f50ddd791669ed223713f4730506e83e4e90",
+  "frozen_split_sha256": "a3d83242847834ef38c6d1de8c9566556f33792041370807c709a5af4370d49f",
+  "split_type": "image_source_risk_group_constrained",
+  "patient_level_independence_verified": false,
+  "source_relationships_clinically_confirmed": false,
+  "model_based_split_selection": false
+}

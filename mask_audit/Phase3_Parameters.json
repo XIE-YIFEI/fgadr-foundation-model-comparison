@@ -1,0 +1,9 @@
+{
+  "reference_threshold": 127,
+  "reference_is_ground_truth": false,
+  "broad_area_flag_px": 5000,
+  "broad_coverage_flag": 0.01,
+  "categories_are_clinically_validated": false,
+  "component_count_represents_confirmed_lesions": false,
+  "created_utc": "2026-10-19T08:10:37.197875+00:00"
+}

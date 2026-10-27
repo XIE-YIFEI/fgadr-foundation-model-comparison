@@ -1,0 +1,11 @@
+{
+  "created_utc": "2026-10-27T14:03:06.316670+00:00",
+  "dataset": "IDRiD: 516 grading images (train+test), 81 images with pixel-level MA masks; no IDRiD data used for fitting",
+  "harmonisation": "crop to fundus bounding box, pad square, resize to 1280x1280 (as FGADR)",
+  "primary": [
+    "classification: seed-mean macro-F1, retinal minus generic, per matched pair",
+    "MA patch probe: AUROC at native scale (1344), block 24, retinal minus generic, per pair"
+  ],
+  "secondary": "QWK, accuracy, referable AUC, grade-1 recall, calibration; probe results at other scales/blocks; image-level probe",
+  "statistics": "paired image-level bootstrap (no patient identifiers), 2000 (classification) / 1000 (probes) resamples"
+}
