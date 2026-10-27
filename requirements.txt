@@ -1,0 +1,20 @@
+# Experiments were run on Google Colab (NVIDIA L4, CUDA) in October 2026.
+# Install the PyTorch build that matches your CUDA version first:
+#   https://pytorch.org/get-started/locally/
+torch>=2.4
+torchvision>=0.19
+timm>=1.0.9
+safetensors
+huggingface_hub
+numpy
+pandas
+scikit-learn
+scikit-image
+scipy
+opencv-contrib-python-headless   # 4.14.0.94 was used for the HOG/ORB duplicate search in Exp 02
+pillow
+tqdm
+pyyaml
+matplotlib
+# Exp 06 (YOLO microaneurysm detection) only:
+# ultralytics

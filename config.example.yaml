@@ -1,0 +1,27 @@
+# Copy this file to config.yaml and edit the paths for your machine.
+# Relative paths are resolved from the repository root.
+
+# FGADR Seg-set fundus images (1,842 PNG files).
+#   by_grade: <fgadr_image_dir>/<dr_grade>/<image_id>.png   (layout used in the paper)
+#   flat:     <fgadr_image_dir>/<image_id>.png
+fgadr_image_dir: /path/to/FGADR/images4classification
+fgadr_image_layout: by_grade
+
+# FGADR pixel-level microaneurysm masks: <fgadr_ma_mask_dir>/<image_id>.png
+fgadr_ma_mask_dir: /path/to/FGADR/Microaneurysms_Masks
+
+# Folder holding the IDRiD zip files as downloaded ("A. Segmentation.zip",
+# "B. Disease Grading.zip"). Only needed for Exp 14/14B/14C; the scripts unzip
+# them into cache_dir/idrid.
+idrid_root: /path/to/IDRiD
+
+# Pretrained encoder weights, arranged as described in README.md.
+pretrained_dir: ./pretrained
+
+# All experiment outputs (fine-tuned checkpoints, predictions, tables).
+# The development scripts in experiments/development/ also expect the original
+# Google Drive layout here, e.g. datasets/DR/FGADR/yolo for Exp 06.
+results_root: ./results
+
+# Fast local disk for image copies and temporary resume files.
+cache_dir: ./cache
