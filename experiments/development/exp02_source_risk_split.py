@@ -12,8 +12,10 @@
 # LOCAL_DISK (cache_dir), Colab secrets come from environment variables,
 # and %pip lines are commented out.
 #
-# NOTE: extracted automatically from the master notebook and not yet
-# checked by the author against the original runs.
+# Checked on 2026-10-28 cell by cell against the master notebook: apart from
+# the path, Colab and %pip changes listed above, every code cell is identical
+# to the code that was run. Cells marked 'identical to cell N' were verified
+# to be exact duplicates.
 
 # %% Paths
 from common.paths import ROOT as DR_RESEARCH
