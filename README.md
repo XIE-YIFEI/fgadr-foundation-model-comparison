@@ -2,7 +2,7 @@
 
 Code, frozen data splits, mask audits and pre-specified analysis plans for the paper
 
-> **Retina-specific foundation pretraining trades fine-grained lesion features for global fundus semantics: a matched comparison for diabetic retinopathy and microaneurysms**. Yifei Xie, Doreen Ying Ying Sim. Under submission to *Frontiers in Medicine* (Ophthalmology section).
+> **Retina-specific foundation pretraining trades fine-grained lesion features for global fundus semantics: a matched comparison for diabetic retinopathy and microaneurysms**. Yifei Xie, Doreen Ying Ying Sim. Under submission to PeerJ.
 
 The study compares retinal-specific foundation models (RETFound-MAE, RETFound-DINOv2) with
 generic counterparts trained with the same objective (Meta MAE, DINOv2) under matched
