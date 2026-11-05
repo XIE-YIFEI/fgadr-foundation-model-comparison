@@ -2,7 +2,7 @@
 
 Code, frozen data splits, mask audits and pre-specified analysis plans for the paper
 
-> **Retina-specific foundation pretraining trades fine-grained lesion features for global fundus semantics: a matched comparison for diabetic retinopathy and microaneurysms**. Yifei Xie, Doreen Ying Ying Sim. Under submission to PeerJ.
+> **Retina-specific versus generic self-supervised pretraining for diabetic retinopathy grading and microaneurysm representation: a matched comparison**. Yifei Xie, Doreen Ying Ying Sim. Under submission to PeerJ.
 
 The study compares retinal-specific foundation models (RETFound-MAE, RETFound-DINOv2) with
 generic counterparts trained with the same objective (Meta MAE, DINOv2) under matched
@@ -13,7 +13,7 @@ were written and hashed before any test image was read.
 
 | Folder | Contents |
 | --- | --- |
-| `experiments/` | One script per experiment, named by experiment number (Exp 10–16) |
+| `experiments/` | One script per experiment, named by experiment number (Exp 10–18) |
 | `experiments/development/` | Exp 01–10 as run step by step in the original notebook, one file per experiment |
 | `common/paths.py` | Reads `config.yaml`; rebuilds the image index and mask manifest used by the scripts |
 | `data_splits/` | Frozen FGADR split (image ID, DR grade, source-risk group, split) and image SHA256 values |
@@ -90,6 +90,10 @@ of earlier ones.
 | 14 | `exp14_external_idrid.py` | External validation on IDRiD: fine-tuned models and frozen probes | `idrid_root`, all checkpoints |
 | 14B | `exp14b_idrid_diagnostics.py` | Diagnostics for the IDRiD classification drop (uses saved predictions) | Exp 14 outputs |
 | 14C | `exp14c_colour_normalisation.py` | Post-hoc colour-normalisation sensitivity on IDRiD | Exp 14 outputs |
+| 17 | `exp17_probe_sensitivity.py` | Post-hoc sensitivity analyses of the test-set MA patch probe: lenient and stricter mask sets, all cells, hard negatives, per-image AUROC, cells read from centred overlapping crops (uses `exp17_encoders.py`) | pretrained weights |
+| 18 | `exp18_attribution_occlusion.py` | Post-hoc attribution analyses on the test MA cohort: Grad-CAM for the predicted class, correct vs misclassified images, lesion occlusion with a lesion-free control occlusion | Exp 04/07/11/16 checkpoints |
+
+Exp 17 and 18 were added after the test results were known. Both can be smoke-tested on a CPU without data or weights: `EXP17_SMOKE=1 python -m experiments.exp17_probe_sensitivity` and `EXP18_SMOKE=1 python -m experiments.exp18_attribution_occlusion` (synthetic images and a tiny ViT from `experiments/_smoke.py`; the numbers are meaningless).
 
 ### Development scripts (Exp 01–10)
 
