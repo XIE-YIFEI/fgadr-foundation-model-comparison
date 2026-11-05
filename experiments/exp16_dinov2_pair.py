@@ -103,7 +103,7 @@ def build_model(name, seed):
     if missing:
         print(f"[{name}] could not match {len(missing)} encoder tensors, e.g. {missing[:5]}")
         print("Checkpoint key examples:", list(clean)[:15])
-        raise RuntimeError("Checkpoint format not recognised - paste this output to Claude.")
+        raise RuntimeError("Checkpoint format not recognised - check the printed keys and adapt the loader.")
     model.load_state_dict(loaded, strict=False)
     print(f"  [{name}] loaded {len(loaded)}/{len(encoder_keys)} encoder tensors")
     del sd, clean; gc.collect()
