@@ -1,4 +1,7 @@
-# Experiments were run on Google Colab (NVIDIA L4, CUDA) in October 2026.
+# Experiments were run on Google Colab (Linux runtime) in October 2026 on one
+# NVIDIA L4 GPU (24 GB) with CUDA and bfloat16 mixed precision.
+# Minimum versions are given; exact versions of the other packages were not
+# recorded at run time. The archived Zenodo release is the reference implementation.
 # Install the PyTorch build that matches your CUDA version first:
 #   https://pytorch.org/get-started/locally/
 torch>=2.4
@@ -16,5 +19,5 @@ pillow
 tqdm
 pyyaml
 matplotlib
-# Exp 06 (YOLO microaneurysm detection) only:
+# Exp 06 (YOLO11 microaneurysm detection reference) only:
 # ultralytics
